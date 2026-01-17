@@ -804,7 +804,8 @@ if(MFEM_FOUND AND OPENCASCADE_FOUND)
                     "volume=1\\.75061[0-9]e\\+03.*"
                     "domain_volume=4\\.032260e\\+03.*"
                     "vol_frac=4\\.34152[0-9]e-01.*"
-                    "nonzero_dofs=54269")
+                    "pos_dofs=54269.*"
+                    "neg_dofs=0")
             elseif(_model STREQUAL "teardrop")
                 set(_res_i 50)
                 set(_res_j 50)
@@ -819,7 +820,8 @@ if(MFEM_FOUND AND OPENCASCADE_FOUND)
                     "volume=4\\.54946[0-9]e\\+00.*"
                     "domain_volume=1\\.597200e\\+01.*"
                     "vol_frac=2\\.84840[0-9]e-01.*"
-                    "nonzero_dofs=35605")
+                    "pos_dofs=35605.*"
+                    "neg_dofs=0")
             elseif(_model STREQUAL "connector")
                 set(_pass_regex
                     "WN_STATS:.*"
@@ -834,7 +836,8 @@ if(MFEM_FOUND AND OPENCASCADE_FOUND)
                     "volume=4\\.125621e\\+00.*"
                     "domain_volume=2\\.939000e\\+01.*"
                     "vol_frac=1\\.403750e-01.*"
-                    "nonzero_dofs=1123")
+                    "pos_dofs=1123.*"
+                    "neg_dofs=0")
             elseif(_model STREQUAL "tet")
                 set(_res_i 50)
                 set(_res_j 50)
@@ -849,7 +852,8 @@ if(MFEM_FOUND AND OPENCASCADE_FOUND)
                     "volume=2\\.59402[0-9]e\\+00.*"
                     "domain_volume=4\\.259200e\\+01.*"
                     "vol_frac=6\\.09040[0-9]e-02.*"
-                    "nonzero_dofs=7613")
+                    "pos_dofs=7613.*"
+                    "neg_dofs=0")
             elseif(_model STREQUAL "boxed_sphere")
                 set(_res_i 30)
                 set(_res_j 30)
@@ -865,7 +869,8 @@ if(MFEM_FOUND AND OPENCASCADE_FOUND)
                     "volume=7\\.33509[0-9]e-01.*"
                     "domain_volume=1\\.363681e\\+00.*"
                     "vol_frac=5\\.378889e-01.*"
-                    "nonzero_dofs=14523")
+                    "pos_dofs=14523.*"
+                    "neg_dofs=0")
             endif()
 
             set(_testname "quest_winding_number_3d_${_model}_res${_res_i}")
