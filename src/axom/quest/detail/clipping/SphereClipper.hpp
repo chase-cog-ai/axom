@@ -1,5 +1,6 @@
-// Copyright (c) 2017-2025, Lawrence Livermore National Security, LLC and
-// other Axom Project Developers. See the top-level COPYRIGHT file for details.
+// Copyright (c) Lawrence Livermore National Security, LLC and other
+// Axom Project Contributors. See top-level LICENSE and COPYRIGHT
+// files for dates and other details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -29,6 +30,15 @@ public:
    * @param [in] kGeom Describes the shape to place
    *   into the mesh.
    * @param [in] name To override the default strategy name
+   *
+   * \c kGeom.asHierarchy() must contain the following data:
+   * - center: 3D coordinates of the center
+   * - radius: radius of the sphere
+   * - levelOfRefinement: number of refinement levels used
+   *   to approximate the sphere with octahedra.  The number
+   *   of octs grows exponentially with this level.
+   *   @see discretize(const SphereType& sphere, int levels, axom::Array<OctType>& out, int& octcount).
+   *   In practice, keep this number to 11 or less.
    */
   SphereClipper(const klee::Geometry& kGeom, const std::string& name = "");
 
