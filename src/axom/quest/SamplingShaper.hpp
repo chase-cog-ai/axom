@@ -1,5 +1,6 @@
-// Copyright (c) 2017-2025, Lawrence Livermore National Security, LLC and
-// other Axom Project Developers. See the top-level LICENSE file for details.
+// Copyright (c) Lawrence Livermore National Security, LLC and other
+// Axom Project Contributors. See top-level LICENSE and COPYRIGHT
+// files for dates and other details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -15,14 +16,12 @@
 #include "axom/config.hpp"
 #include "axom/core.hpp"
 #include "axom/slic.hpp"
-#include "axom/slam.hpp"
 #include "axom/primal.hpp"
 #include "axom/mint.hpp"
-#include "axom/spin.hpp"
 #include "axom/klee.hpp"
 
-#ifndef AXOM_USE_MFEM
-  #error Shaping functionality requires Axom to be configured with MFEM and the AXOM_ENABLE_MFEM_SIDRE_DATACOLLECTION option
+#if !defined(AXOM_USE_MFEM) || !defined(AXOM_USE_SIDRE)
+  #error SamplingShaper requires Axom to be configured with MFEM and Sidre
 #endif
 
 #include "axom/quest/Shaper.hpp"

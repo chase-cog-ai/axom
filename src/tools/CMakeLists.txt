@@ -1,5 +1,6 @@
-# Copyright (c) 2017-2025, Lawrence Livermore National Security, LLC and
-# other Axom Project Developers. See the top-level LICENSE file for details.
+# Copyright (c) Lawrence Livermore National Security, LLC and other
+# Axom Project Contributors. See top-level LICENSE and COPYRIGHT
+# files for dates and other details.
 #
 # SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -109,8 +110,7 @@ endif()
 # data_collection_util is a utility that generates blueprint-conforming sidre
 # output files from an input mfem mesh
 #------------------------------------------------------------------------------
-if( AXOM_ENABLE_SIDRE AND AXOM_ENABLE_PRIMAL AND
-    MFEM_FOUND AND AXOM_ENABLE_MFEM_SIDRE_DATACOLLECTION)
+if(AXOM_ENABLE_SIDRE AND AXOM_ENABLE_PRIMAL AND MFEM_FOUND)
 
     set(data_collection_util
         data_collection_util.cpp
