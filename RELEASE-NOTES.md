@@ -1,8 +1,8 @@
 
 [comment]: # (#################################################################)
-[comment]: # (Copyright 2017-2025, Lawrence Livermore National Security, LLC)
-[comment]: # (and Axom Project Developers. See the top-level LICENSE file)
-[comment]: # (for details.)
+[comment]: # (Copyright Lawrence Livermore National Security, LLC and other)
+[comment]: # (Axom Project Contributors. See top-level LICENSE and COPYRIGHT)
+[comment]: # (files for dates and other details.)
 [comment]: #
 [comment]: # (# SPDX-License-Identifier: BSD-3-Clause)
 [comment]: # (#################################################################)
@@ -45,9 +45,16 @@ The Axom project release numbers follow [Semantic Versioning](http://semver.org/
 - Adds spack variants for `adiak` and `caliper`. These replace the previous `profiling` variant which enabled both at the same time.
 - Adds the `AXOM_TEST_NUM_OMP_THREADS` configuration variable to control the default OpenMP thread count for tests.
 - Slic: Adds `slic::getAbortFunction()` to return a function pointer to the abort handler called during logging functions
-- Quest: Adds a 3D winding number example and impoves WN performance in 2D and 3D
+- Quest: Adds a 3D winding number example and improves WN performance in 2D and 3D
 
 ###  Changed
+- Version of `quest::discretize` that approximates a surface-of-revolution from a polyline
+  now respects the allocator ID of the output `Array`.  It no longer resets the ID to the
+  execution space default.
+- Updates to [RAJA version 2025.12.1](https://github.com/LLNL/RAJA/releases/tag/v2025.12.1)
+- Updates to [camp version 2025.12.0](https://github.com/LLNL/camp/releases/tag/v2025.12.0)
+- Updates to [Umpire version 2025.12.0](https://github.com/LLNL/Umpire/releases/tag/v2025.12.0)
+- Updates to [Caliper version 2.14.0](https://github.com/LLNL/Caliper/releases/tag/v2.14.0)
 - Evaluation methods for line integrals in `axom::primal` have been generalized, and 
   `evaluate_scalar_line_integral` has been renamed to `evaluate_line_integral`.
 - Treatment of materials on strided-structured Blueprint meshes has changed in `axom::mir`.
@@ -86,6 +93,9 @@ The Axom project release numbers follow [Semantic Versioning](http://semver.org/
 - Quest: `MFEMReader` can now read in multispan 1D NURBS meshes
 - fmt: Axom's built-in version of the fmt formatting library was updated to [fmt version 12.1.0](https://github.com/fmtlib/fmt/releases/tag/12.1.0).
 - Primal: Improves robustness of `linear_winding_number` by using `atan2` instead of `acos`
+- Core: Allows users to set the minimum size for Axom's shared memory allocator in `getSharedMemoryAllocatorID()`
+- Core: Allows users to set the name of the shared memory allocation in `allocate()`
+- Quest: Adds a function to the signed distance API to set the shared memory size:  `signed_distance_set_shared_memory_size()`
 
 ###  Fixed
 - Sina's Fortran tests are now running (instead of silently failing)
@@ -93,6 +103,11 @@ The Axom project release numbers follow [Semantic Versioning](http://semver.org/
 - Quest: In Shaping applications, we now check return code after attempting to load a mesh
   and throw an error for unsuccessful loads.
 - Core: Bugfix for batched insertion into a FlatMap with deleted entries
+- Quest: Sets the allocation name for shared memory in the signed distance query
+
+###  Removed
+- Removes the `AXOM_ENABLE_MFEM_SIDRE_DATACOLLECTION` CMake config variable. 
+  It is no longer needed -- we now always use MFEMSidreDataCollection in configurations with `mfem` and `sidre`.
 
 ###  Deprecated
 

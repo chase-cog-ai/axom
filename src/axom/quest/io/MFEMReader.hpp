@@ -1,5 +1,6 @@
-// Copyright (c) 2017-2025, Lawrence Livermore National Security, LLC and
-// other Axom Project Developers. See the top-level LICENSE file for details.
+// Copyright (c) Lawrence Livermore National Security, LLC and other
+// Axom Project Contributors. See top-level LICENSE and COPYRIGHT
+// files for dates and other details.
 //
 // SPDX-License-Identifier: (BSD-3-Clause)
 
@@ -8,8 +9,8 @@
 
 #include "axom/config.hpp"
 
-#if !defined(AXOM_USE_MFEM) || !defined(AXOM_USE_SIDRE)
-  #error MFEMReader should only be included when Axom is configured with MFEM, SIDRE (and MFEM_SIDRE_DATACOLLECTION)
+#ifndef AXOM_USE_MFEM
+  #error MFEMReader should only be included when Axom is configured with MFEM
 #endif
 
 #include "axom/core/Array.hpp"
